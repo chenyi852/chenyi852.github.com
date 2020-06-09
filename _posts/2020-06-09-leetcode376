@@ -1,1 +1,37 @@
+---
+layout: post
+title: "leetcode376-解题思路"
+subtitle: '摆动序列'
+author: "Johnny"
+header-style: text
+tags:
 
+  - leetcode
+  - 摆动序列
+---
+## 解题思路
+- 计算2数是递减还是递增
+- 如果是递减，则判断前面的2数是否为递增或等于0（prediff只有在前面2个数才有可能为0），是则子序列长度++，并且将当前的diff赋给prediff
+- 如果是递增，则判断前面的2数是否为递减或者等于0（prediff只有在 前面2个数才有可能为0）， 是则子序列长度++，
+```c
+int wiggleMaxLength(int* nums, int numsSize){
+	int ans = 0;
+	int prediff, diff;
+	
+	if (numsSize < 2) {
+		return numsSize;
+	}
+	
+	prediff = nums[1] - nums[0];
+	ans = prediff != 0 ? 2 : 1;
+	for (int i = 2; i < numsSize; i++) {
+		diff = nums[i] - nums[i - 1];
+		
+		if ((diff > 0 && prediff <= 0) || (diff < 0 && prediff >= 0) ) {
+			ans++;
+			prediff = diff;
+		}
+	}
+	return ans;
+}
+```
