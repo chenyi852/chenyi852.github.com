@@ -1,0 +1,87 @@
+---
+layout: post
+title: "leetcode361-解题思路"
+subtitle: '去重使得字典序最小'
+author: "Johnny"
+header-style: text
+tags:
+
+  - leetcode
+  - 去重使得字典序最小
+---
+## 解题思路
+可以用单调栈来解决
+
+- 1 遍历输入的字符串，保存到hash数组中
+- 2 判断栈中，字符是否存在，如果存在，则hash表中对应的字符统计个数减一
+- 3 如果栈不为空， 遍历的数据小于栈顶元素，hash表中对应的字符 > 1, 那么栈顶元素出栈，hash表中统计的字符减一
+- 4 将该字符入栈
+
+```c
+typedef struct _stack_t {
+    int top;
+    char data[1024];
+}stack_t;
+
+static stack_t stack;
+
+static void stack_init(void) {
+    stack.top = -1;
+}
+
+static int stack_top(void) {
+    return stack.data[stack.top];
+}
+
+static void stack_push(char d) {
+    stack.data[++stack.top] = d;
+}
+
+static char stack_pop(void) {
+    return stack.data[stack.top--];
+}
+
+static int stack_empty(void) {
+    return (stack.top == -1);
+}
+
+static int stack_exist(char d) {
+    for (int i = 0; i <= stack.top; i++) {
+        if (stack.data[i] == d) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+char * removeDuplicateLetters(char * s){
+    int hash[26] = {0};
+    int i;
+
+    for (i = 0; i <strlen(s); i++) {
+        hash[s[i] - 'a']++;
+    }
+
+    stack_init();
+
+    for (i = 0; i < strlen(s); i++) {
+		
+		if (stack_exist(s[i])) {
+			hash[s[i] - 'a']--;
+			continue;
+		}
+		
+        while (!stack_empty() && s[i] < stack_top() && hash[stack_top() - 'a'] > 1) {
+			char pop;
+            pop = stack_pop();
+			hash[pop - 'a']--;
+        }
+
+        stack_push(s[i]);
+		
+    }
+	stack_push('\0');
+
+    return &(stack.data[0]);
+}
+```
