@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "leetcode1326"
-subtitle: '坏了的计算器'
+title: "Python所有库"
+subtitle: '知乎上整理的python库'
 author: "Johnny"
 header-style: text
 tags:
 
-  - leetcode
-  - 坏了的计算器
+  - python
+  - library
 
 ---
 ## 解题思路
