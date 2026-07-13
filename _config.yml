@@ -1,4 +1,5 @@
 # Site settings
+
 title: Chen Yi Blog
 SEOTitle: 陈熠的博客 | Chen Yi Blog
 header-img: img/home-bg.jpg
@@ -12,7 +13,7 @@ future: true
 
 # SNS settings
 RSS: false
-weibo_username:     wing_zone
+
 github_username:    chenyi852
 #facebook_username:  
 #linkedin_username:  
