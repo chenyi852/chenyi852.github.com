@@ -4,8 +4,8 @@ SEOTitle: 陈熠的博客 | Chen Yi Blog
 header-img: img/home-bg.jpg
 email: chenyi852@gmail.com
 description: "关于程序与设计 | Software Engineer，kernel Designer | 一起分享，一起交流。"
-url: ""              # your host, for absolute URL
-baseurl: "https://chenyi852.github.io/" # for example, '/blog' if your blog hosted on 'host/blog'
+url: "https://chenyi852.github.io"              # your host, for absolute URL
+baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
 # Publish posts or collection documents with a future date.
 future: true
